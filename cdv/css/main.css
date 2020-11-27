@@ -81,6 +81,7 @@ body{
 	margin: 0;
 	padding: 0;
 	display: block;
+	background-color: grey;
 	background: url("../img/bgPaper.png");
 	color:#a13835;
 	font-family: 'Open Sans', sans-serif;
@@ -145,7 +146,7 @@ p{
 }
 
 .left{
-	background: white url(https://i.imgur.com/CVIsxCf.jpg) no-repeat;
+	background: white url(../img/bg.jpg) no-repeat;
 	background-size: cover;
 	background-position: center;
 	height: 30vw;
