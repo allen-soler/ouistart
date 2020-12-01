@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html id="fixH" class="sky">
+<html id="fixH" class="sky" lang="fr">
 	<head>
 		<title>Carte de voeux</title>
-		<link rel="stylesheet" type="text/css" href="fonts.googleapis.com/css?family=Mountains+of+Christmas" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/lightbox.min.css">
+		<link rel="stylesheet" href="dist/css/lightbox.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="utf-8">
 	</head>
@@ -32,117 +33,14 @@
 			</div>
 		</div>
 		</main>
-		<script src="js/lightbox-plus-jquery.min.js"></script>
+		<script src="dist/js/lightbox-plus-jquery.min.js"></script>
 		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/babel">
-			'use strict'
-
-const canvas = document.querySelector('canvas.snowWrap')
-const ctx = canvas.getContext('2d')
-
-let width, height, lastNow
-let snowflakes
-const maxSnowflakes = 100
-
-function init() {
-  snowflakes = []
-  resize()
-  render(lastNow = performance.now())
-}
-
-function render(now) {
-  requestAnimationFrame(render)
-
-  const elapsed = now - lastNow
-  lastNow = now
-
-  ctx.clearRect(0, 0, width, height)
-  if (snowflakes.length < maxSnowflakes)
-	snowflakes.push(new Snowflake())
-
-  ctx.fillStyle = ctx.strokeStyle = '#FFD700'
-
-  snowflakes.forEach(snowflake => snowflake.update(elapsed, now))
-}
-
-function pause() {
-  cancelAnimationFrame(render)
-}
-function resume() {
-  lastNow = performance.now()
-  requestAnimationFrame(render)
-}
-
-
-class Snowflake {
-  constructor() {
-	this.spawn()
-  }
-
-  spawn(anyY = false) {
-	this.x = rand(0, width)
-	this.y = anyY === true
-	  ? rand(-50, height + 50)
-	  : rand(-50, -10)
-	this.xVel = rand(-.05, .05)
-	this.yVel = rand(.02, .1)
-	this.angle = rand(0, Math.PI * 2)
-	this.angleVel = rand(-.001, .001)
-	this.size = rand(7, 12)
-	this.sizeOsc = rand(.01, .5)
-  }
-
-  update(elapsed, now) {
-	const xForce = rand(-.001, .001);
-
-	if (Math.abs(this.xVel + xForce) < .075) {
-	  this.xVel += xForce
-	}
-
-	this.x += this.xVel * elapsed
-	this.y += this.yVel * elapsed
-	this.angle += this.xVel * 0.05 * elapsed //this.angleVel * elapsed
-
-	if (
-	  this.y - this.size > height ||
-	  this.x + this.size < 0 ||
-	  this.x - this.size > width
-	) {
-	  this.spawn()
-	}
-
-	this.render()
-  }
-
-  render() {
-	ctx.save()
-	const { x, y, angle, size } = this
-	ctx.beginPath()
-	ctx.arc(x, y, size * 0.2, 0, Math.PI * 2, false)
-	ctx.fill()
-	ctx.restore()
-  }
-}
-
-// Utils
-const rand = (min, max) => min + Math.random() * (max - min)
-
-function resize() {
-  width = canvas.width = window.innerWidth
-  height = canvas.height = window.innerHeight
-}
-
-window.addEventListener('resize', resize)
-window.addEventListener('blur', pause)
-window.addEventListener('focus', resume)
-init()
-
-
-		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="js/js.js"></script>
 		<script>
 			var id_h,
-				cnt = 0;
+				cnt = 0,
+				old;
 
 			var clickedId;
 			$(".classOfLink").click(function()
@@ -153,7 +51,6 @@ init()
 					cnt++;
 					if (cnt == 6)
 					{
-						console.log(cnt);
 						document.getElementById("rightH").style.display ="none";
 						document.getElementById("leftB").style.width = "100%";
 						document.getElementById("leftB").style.height = "auto";

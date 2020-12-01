@@ -3,6 +3,11 @@
  * Snow.  
  *
  * ***************************/
+
+*{
+font-display: auto;
+}
+
 .snow, .snow:before, .snow:after {
 
 	position: absolute;
