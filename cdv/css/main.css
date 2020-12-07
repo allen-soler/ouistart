@@ -87,7 +87,7 @@ body{
 	padding: 0;
 	display: block;
 	background-color: grey;
-	background: url("../img/bgPaper.png");
+	background: LightSalmon url("../img/bgPaper.png");
 	color:#a13835;
 	font-family: 'Open Sans', sans-serif;
 
@@ -155,26 +155,33 @@ p{
 	background-size: cover;
 	background-position: center;
 	height: 30vw;
-	opacity: 0.9;
+	opacity: 0.8;
 	float: left;
 	width: 85%;
 
 }
 
+.left canvas {
+	position :initial !important;
+}
+
 .right {
 	float: right;
 	width: 15%;
-	background-color: rgba(145,117,97, 0.7);
 	display: block;
 }
 
 a{
+	text-decoration: none;
+	color: rgba(255, 255, 255, 1);
+	background: rgba(145,117,97, 0.6);
+	border-radius: 4px;
+	transition: all 0.2s ease-in-out;
 	display: block;
 	font-size: 2vw;
 	font-weight: 100;
 	padding: 9.85% 0;
 	text-decoration: none;
-	color : #e5d1c1;
 	text-align: center;
 	box-shadow: 
 	inset 0 -2em 2em rgba(0,0,0,0.1), 
@@ -182,57 +189,45 @@ a{
 	0.8em 0.8em 5em rgba(0,0,0,0.3);
 }
 
-a:visited  {
-	color:black !important;
-}
-
 a:hover{
 	background-color:white;
+	color: rgba(145,117,97, 0.7);,
 	box-shadow: none;
 }
 
-/***********************
- * Animation
- **********************/
-
 .aniBtn {
-        border: none;
-        color: #eeeeee;
-        cursor: pointer;
-		animation: glowing 2s infinite;
-      }
-      @keyframes glowing {
-         0% {
-          background-color: rgba(255, 250, 250, 0.1);
-        }
-        10% {
-          background-color: rgba(255, 250, 250, 0.2);
-        }
-        20% {
-          background-color: rgba(255, 250, 250, 0.3);
-        }
-		30% {
-          background-color: rgba(255, 250, 250, 0.4);
-        }
-		40% {
-          background-color: rgba(255, 250, 250, 0.5);
-        }
-        50% {
-          background-color: rgba(255, 250, 250, 0.6);
-        }       
-		60% {
-          background-color: rgba(255, 250, 250, 0.7);
-        }
-        70% {
-          background-color: rgba(255, 250, 250, 0.8);
-        }
-        80% {
-          background-color: rgba(255, 250, 250, 0.9);
-        }
-		90% {
-          background-color: rgba(255, 250, 250, 1);
-        }
-        100% {
-			background-color: rgba(145,117,97, 0.5);
-        }
-      }
+	animation: glowing 1s infinite;
+}
+
+@keyframes glowing {
+	0% {
+		background-color: rgba(255, 250, 250, 0.1);
+	}
+	10% {
+		background-color: rgba(255, 250, 250, 0.2);
+	}
+	20% {
+		background-color: rgba(255, 250, 250, 0.3);
+	}
+	30% {
+		background-color: rgba(255, 250, 250, 0.4);
+	}
+	40% {
+		background-color: rgba(255, 250, 250, 0.5);
+	}
+	50% {
+		background-color: rgba(255, 250, 250, 0.6);
+	}       
+	60% {
+		background-color: rgba(255, 250, 250, 0.7);
+	}
+	70% {
+		background-color: rgba(255, 250, 250, 0.8);
+	}
+	80% {
+		background-color: rgba(255, 250, 250, 0.9);
+	}
+	90%, 100% {
+		background-color: rgba(255, 250, 250, 1);
+	}
+}

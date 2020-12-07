@@ -11,6 +11,7 @@ let id_h,
 
 $(".classOfLink").click(function()
 	{
+		old = 1;
 		clickedId = $(this).attr("id");
 		id_h = document.getElementById(clickedId);
 		arr.indexOf(clickedId);
@@ -26,24 +27,25 @@ $(".classOfLink").click(function()
 /*
 			------------------
 			*/
-function someFunction(cnt, arr, clickedId){
-	if (clickedId)
+function someFunction(cnt, oldcnt, clickedId){
+	if (cnt == 7)
+		cnt = 1;
+	let element = document.getElementById(cnt);
+	let str = document.getElementById(cnt).className;
+	let name = "aniBtn";
+	element.className += " " + name;
+	if (oldcnt > 0)
 	{
-		for( var i = 0; i < arr.length; i++){
-			if ( arr[i] === cnt) {
-				arr.splice(i, 1);
-				break ;	
-			}
-		}
+		element = document.getElementById(oldcnt);
+		element.classList.remove(name);
 	}
-	console.log(arr);
-	console.log(clickedId);
-	setTimeout(someFunction, 5000, cnt, arr, clickedId)
-	console.log("hi");
+	oldcnt = cnt;
+	cnt++;	
+	setTimeout(someFunction, 2000, cnt, oldcnt, clickedId);
 	// YES, setTimeout passes any extra args to
 	// function being called
 }
-someFunction(cnt, arr, clickedId);
+someFunction(1, 0, clickedId);
 /*
 			------------------
 			*/
@@ -164,7 +166,7 @@ const canvas = document.querySelector('canvas.snowWrap');
 const ctx = canvas.getContext('2d');
 let width, height, lastNow;
 let snowflakes;
-const maxSnowflakes = 100;
+const maxSnowflakes = 150;
 
 function init() {
 	snowflakes = [];
