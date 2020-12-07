@@ -1,3 +1,163 @@
+/*
+ *snow normal
+ */
+
+
+let id_h,
+	cnt = 0,
+	old = 0,
+	clickedId,
+	arr = [1 , 2, 3, 4, 5, 6];
+
+$(".classOfLink").click(function()
+	{
+		clickedId = $(this).attr("id");
+		id_h = document.getElementById(clickedId);
+		arr.indexOf(clickedId);
+		id_h.style.display = "none";
+		cnt++;
+		if (cnt == 6)
+		{
+			document.getElementById("rightH").style.display ="none";
+			document.getElementById("leftB").style.width = "100%";
+			document.getElementById("leftB").style.height = "auto";
+		}
+	});
+/*
+			------------------
+			*/
+function someFunction(cnt, arr, clickedId){
+	if (clickedId)
+	{
+		for( var i = 0; i < arr.length; i++){
+			if ( arr[i] === cnt) {
+				arr.splice(i, 1);
+				break ;	
+			}
+		}
+	}
+	console.log(arr);
+	console.log(clickedId);
+	setTimeout(someFunction, 5000, cnt, arr, clickedId)
+	console.log("hi");
+	// YES, setTimeout passes any extra args to
+	// function being called
+}
+someFunction(cnt, arr, clickedId);
+/*
+			------------------
+			*/
+var y = 5,
+	on = 0,
+	win = window,
+	doc = document,
+	docElem = doc.documentElement,
+	body = doc.getElementsByTagName('body')[0],
+	y = win.innerHeight|| docElem.clientHeight|| body.clientHeight,
+	y = y + 'px';
+
+document.getElementById('fixH').style.height = y;
+
+(function () {
+
+	var COUNT = 500;
+	var masthead = document.querySelector('.sky');
+	var canvas = document.createElement('canvas');
+	var ctx = canvas.getContext('2d');
+	var width = masthead.clientWidth;
+	var height = masthead.clientHeight;
+	var i = 0;
+	var active = false;
+
+	function onResize() {
+		width = masthead.clientWidth;
+		height = masthead.clientHeight;
+		canvas.width = width;
+		canvas.height = height;
+		ctx.fillStyle = 'snow';
+
+		var wasActive = active;
+		active = width > 600;
+
+		if (!wasActive && active)
+			requestAnimFrame(update);
+	}
+
+	var Snowflake = function () {
+		this.x = 0;
+		this.y = 0;
+		this.vy = 0;
+		this.vx = 0;
+		this.r = 0;
+
+		this.reset();
+	}
+
+	Snowflake.prototype.reset = function() {
+		this.x = Math.random() * width;
+		this.y = Math.random() * -height;
+		this.vy = 1 + Math.random() * 3;
+		this.vx = 0.5 - Math.random();
+		this.r = 1 + Math.random() * 2;
+		this.o = 0.5 + Math.random() * 0.5;
+	}
+
+	canvas.style.position = 'absolute';
+	canvas.style.left = canvas.style.top = '0';
+
+	var snowflakes = [], snowflake;
+	for (i = 0; i < COUNT; i++) {
+		snowflake = new Snowflake();
+		snowflake.reset();
+		snowflakes.push(snowflake);
+	}
+
+	function update() {
+
+		ctx.clearRect(0, 0, width, height);
+
+		if (!active)
+			return;
+
+		for (i = 0; i < COUNT; i++) {
+			snowflake = snowflakes[i];
+			snowflake.y += snowflake.vy;
+			snowflake.x += snowflake.vx;
+
+			ctx.globalAlpha = snowflake.o;
+			ctx.beginPath();
+			ctx.arc(snowflake.x, snowflake.y, snowflake.r, 0, Math.PI * 2, false);
+			ctx.closePath();
+			ctx.fill();
+
+			if (snowflake.y > height) {
+				snowflake.reset();
+			}
+		}
+
+		requestAnimFrame(update);
+	}
+
+	// shim layer with setTimeout fallback
+	window.requestAnimFrame = (function(){
+		return  window.requestAnimationFrame       ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame    ||
+			function( callback ){
+				window.setTimeout(callback, 1000 / 60);
+			};
+	})();
+
+	onResize();
+	window.addEventListener('resize', onResize, false);
+
+	masthead.appendChild(canvas);
+})();
+
+/*
+ *snow effect gold
+ */
+
 'use strict';
 
 const canvas = document.querySelector('canvas.snowWrap');

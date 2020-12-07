@@ -5,7 +5,7 @@
  * ***************************/
 
 *{
-font-display: auto;
+	font-display: auto;
 }
 
 .snow, .snow:before, .snow:after {
@@ -157,14 +157,14 @@ p{
 	height: 30vw;
 	opacity: 1;
 	float: left;
- 	width: 85%;
+	width: 85%;
 
 }
 
 .right {
 	float: right;
 	width: 15%;
-	background-color: rgb(145,117,97, 0.9);
+	background-color: rgba(145,117,97, 0.8);
 	display: block;
 }
 
@@ -177,9 +177,9 @@ a{
 	color : #e5d1c1;
 	text-align: center;
 	box-shadow: 
-       inset 0 -2em 2em rgba(0,0,0,0.1), 
-             0 0  0 1px rgb(255,255,255),
-             0.8em 0.8em 5em rgba(0,0,0,0.3);
+	inset 0 -2em 2em rgba(0,0,0,0.1), 
+	0 0  0 1px rgb(255,255,255),
+	0.8em 0.8em 5em rgba(0,0,0,0.3);
 }
 
 a:visited  {
@@ -190,3 +190,28 @@ a:hover{
 	background-color:white;
 	box-shadow: none;
 }
+
+/***********************
+ * Animation
+ **********************/
+
+.aniBtn {
+        border: none;
+        color: #eeeeee;
+        cursor: pointer;
+      }
+      @keyframes glowing {
+        0% {
+          background-color: snow;
+        }
+        50% {
+          background-color: rgba(145,117,97, 1);
+
+        }
+        100% {
+          background-color: snow;
+        }
+      }
+      .aniBtn  {
+        animation: glowing 5s;
+      }
