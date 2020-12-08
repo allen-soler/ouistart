@@ -23,11 +23,7 @@ $(".classOfLink").click(function()
 		{
 			var div = document.createElement('div');
 			div.className = 'xmasTree';
-			document.getElementById("wrap").style.display = "none";
-			document.getElementById("removen").style.display = "none";
-			document.getElementById("snow").style.display = "none";
-			document.getElementById("color-n").style.display = "none";
-			document.getElementById("bdy").id = "";
+			document.getElementById("rightH").style.display = "none";
 			document.body.appendChild(div);
 		}
 	});
