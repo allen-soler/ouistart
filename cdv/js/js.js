@@ -9,6 +9,8 @@ let id_h,
 	clickedId,
 	arr = [1 , 2, 3, 4, 5, 6];
 
+
+
 $(".classOfLink").click(function()
 	{
 		old = 1;
@@ -19,9 +21,14 @@ $(".classOfLink").click(function()
 		cnt++;
 		if (cnt == 6)
 		{
-			document.getElementById("rightH").style.display ="none";
-			document.getElementById("leftB").style.width = "100%";
-			document.getElementById("leftB").style.height = "auto";
+			var div = document.createElement('div');
+			div.className = 'xmasTree';
+			document.getElementById("wrap").style.display = "none";
+			document.getElementById("removen").style.display = "none";
+			document.getElementById("snow").style.display = "none";
+			document.getElementById("color-n").style.display = "none";
+			document.getElementById("bdy").id = "";
+			document.body.appendChild(div);
 		}
 	});
 /*
