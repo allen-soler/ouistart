@@ -45,8 +45,6 @@ function someFunction(cnt, oldcnt, clickedId){
 	oldcnt = cnt;
 	cnt++;	
 	setTimeout(someFunction, 2000, cnt, oldcnt, clickedId);
-	// YES, setTimeout passes any extra args to
-	// function being called
 }
 someFunction(1, 0, clickedId);
 /*
